@@ -1,117 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Jost", sans-serif;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    max-height: 150px;
-    background: #EE4C9B;
-    padding: 10px;
+  margin: 0;
+  padding: 0;
+  font-family: "Jost", sans-serif;
 }
 
 input {
-    outline: none;
-}
-
-.menu {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-}
-
-footer {
-    max-height: 150px;
-    background: #EE4C9B;
-    padding: 10px;
-}
-
-header img {
-    max-height: 150px;
-}
-
-.container {
-    display: grid;
-    grid-template-areas: 'header header header' 'banner banner banner'
-    'sidebar content content' 'sidebar profiles profiles' 'footer footer footer';
-    gap: 20px;
-}
-
-.banner {
-    display: flex;
-    justify-content: center;
-    grid-area: banner;
-    background: #52C65B;
-}
-
-.sidebar {
-    max-width: 350px;
-    grid-area: sidebar;
-}
-
-.sidebar img {
-    width: 100%;
-}
-
-.profiles {
-    display: block;
-    grid-area: profiles;
-    flex-wrap: wrap;
-
-}
-
-.profiles img {
-    max-width: 200px;
-}
-
-.content {
-    grid-area: content;
+  outline: none;
 }
 
 .formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .formulario input {
-    border-radius: 8px;
-    border: 1px solid #EE4C9B;
-    height: 30px;
-    padding: 0 10px;
-    box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #ee4c9b;
+  height: 30px;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .formulario input::placeholder {
-    font-family: "Jost", sans-serif;
-    font-size: 14px;
+  font-family: "Jost", sans-serif;
+  font-size: 14px;
 }
 
-.formulario input, .formulario button{
-    max-width: 300px;
+.formulario input,
+.formulario button {
+  max-width: 300px;
 }
 
 .formulario-senha {
-    display: flex;
-    max-width: 300px;
-    gap: 10px;
+  display: flex;
+  max-width: 300px;
+  gap: 10px;
 }
 
 .formulario-senha input {
-    width: 100%;
+  width: 100%;
 }
 
 .formulario button {
-    cursor: pointer;
-    height: 30px;
-    border-radius: 8px;
-    background: #E87DA9;
-    border: #EE4C9B;
-    color: #fff;
+  cursor: pointer;
+  height: 30px;
+  border-radius: 8px;
+  background: #e87da9;
+  border: #ee4c9b;
+  color: #fff;
 }
