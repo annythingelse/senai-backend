@@ -94,6 +94,17 @@
 //   `A sequência contrário do array: ${arrayNumbers} = ${arrayNumbers.reverse()}`
 // );
 
+// Maneira legal de fazer
+let nums = [];
+let reverso = "";
+for (let i = 0; i < 3; i++) {
+  nums.push(Number(prompt("Digite um número")));
+}
+for (let j = nums.length - 1; j >= 0; j--) {
+  reverso += nums[j] + " ";
+}
+alert(reverso);
+
 // 3) Calcular a soma dos números de um array
 // ---------------> Resolução:
 // let numbers = [15, 24, 37, 45, 102, 9];
