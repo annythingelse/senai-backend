@@ -9,6 +9,24 @@ input {
   outline: none;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
+}
+
+.container-logo {
+  max-width: 50%;
+}
+
+.container-logo img {
+  max-width: 368px;
+}
+
 .formulario {
   display: flex;
   flex-direction: column;
@@ -17,8 +35,8 @@ input {
 
 .formulario input {
   border-radius: 8px;
-  border: 1px solid #ee4c9b;
-  height: 30px;
+  border: 1px solid #f8f1eb;
+  height: 40px;
   padding: 0 10px;
   box-sizing: border-box;
 }
@@ -45,9 +63,14 @@ input {
 
 .formulario button {
   cursor: pointer;
-  height: 30px;
+  height: 40px;
   border-radius: 8px;
-  background: #e87da9;
-  border: #ee4c9b;
+  background: #a6255c;
   color: #fff;
+  border: none;
+}
+
+.formulario button:disabled {
+  opacity: 0.3;
+  cursor: default;
 }

@@ -6,27 +6,29 @@
     <title>JS :D</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <div class="formulario">
-      <input type="text" placeholder="Digite seu nome" name="" id="name" />
-      <input placeholder="Digite seu email" type="email" name="" id="email" />
-      <div class="formulario-senha">
-        <input
-          placeholder="Crie uma senha"
-          type="password"
-          name=""
-          id="password"
-        />
-        <input
-          placeholder="Confirme sua senha"
-          type="password"
-          name=""
-          id="passwordConfirmed"
-        />
+  <body style="background: #f4c4cb;">
+    <div class="container">
+      <div class="container-logo">
+        <img src="./assets/logo.png" alt="" srcset="" />
       </div>
-      <label>Digite sua data de nascimento</label>
-      <input type="date" name="" id="birthdayDate" />
-      <button id="sendButton" onclick="verificandoInputs()">Cadastrar</button>
+
+      <div class="formulario">
+        <input type="text" placeholder="Digite seu nome" id="name" />
+        <input placeholder="Digite seu email" type="email" id="email" />
+        <div class="formulario-senha">
+          <input placeholder="Crie uma senha" type="password" id="password" />
+          <input
+            placeholder="Confirme sua senha"
+            type="password"
+            id="passwordConfirmed"
+          />
+        </div>
+        <label>Digite sua data de nascimento</label>
+        <input type="date" name="" id="birthdayDate" />
+        <button id="sendButton" onclick="verificandoInputs()" disabled>
+          Cadastrar
+        </button>
+      </div>
     </div>
 
     <footer></footer>
