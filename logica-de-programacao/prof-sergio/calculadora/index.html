@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+  </head>
+  <body></body>
+  <script>
+    function somar(numero1, numero2) {
+      let soma = numero1 + numero2;
+      return soma;
+    }
+
+    function subtracao(numero1, numero2) {
+      let subtrair = numero1 - numero2;
+      return subtrair;
+    }
+
+    function divisao(numero1, numero2) {
+      let dividir = numero1 / numero2;
+      return dividir;
+    }
+
+    function multiplicacao(numero1, numero2) {
+      let multiplicar = numero1 * numero2;
+      return multiplicar;
+    }
+
+    let num1 = parseInt(prompt("Digite um número"));
+    let num2 = parseInt(prompt("Digite outro número"));
+    let menu = prompt(`Qual operação você deseja fazer:  
+(a) Adição 
+(b) Subtração 
+(c) Divisão 
+(d) Multiplicação`);
+
+    let resultado = "";
+
+    switch (menu) {
+      case "a":
+        resultado = somar(num1, num2);
+        alert(`Resultado de ${num1} + ${num2} = ${resultado}`);
+        break;
+
+      case "b":
+        resultado = subtracao(num1, num2);
+        alert(`Resultado de ${num1} - ${num2} = ${resultado}`);
+        break;
+
+      case "c":
+        resultado = divisao(num1, num2);
+        alert(`Resultado de ${num1} ÷ ${num2} = ${resultado}`);
+        break;
+
+      case "d":
+        resultado = multiplicacao(num1, num2);
+        alert(`Resultado de ${num1} x ${num2} = ${resultado}`);
+        break;
+
+      default:
+        alert("Digite corretamente");
+    }
+  </script>
+</html>
