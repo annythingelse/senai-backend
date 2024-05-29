@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Jost", sans-serif;
+}
+
+a, p, h1, h4, h2{
+    margin: 0;
+}
+
+header{
+    height: 10vh;
+    background-color: #f4c4cb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer {
+    height: 10vh;
+    background-color: #f4c4cb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header img {
+    max-height: 10vh;
+}
+
+main {
+    max-width: 1252px;
+    margin: 0 auto;
+}
+
+/* .item {
+    display: flex;
+    gap: 20px;
+} */
+
+.item img {
+   gap: 10px;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}

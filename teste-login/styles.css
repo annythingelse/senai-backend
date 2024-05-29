@@ -19,10 +19,6 @@ input {
   gap: 20px;
 }
 
-.container-logo {
-  max-width: 50%;
-}
-
 .container-logo img {
   max-width: 368px;
 }
@@ -73,4 +69,10 @@ input {
 .formulario button:disabled {
   opacity: 0.3;
   cursor: default;
+}
+
+@media (min-width: 1024px) {
+  .container-logo {
+    max-width: 50%;
+  }
 }

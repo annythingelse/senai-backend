@@ -1,6 +1,5 @@
 // verificando inputs
 let formsOk = false;
-console.log(formsOk);
 
 let Nome = document.getElementById("name");
 let Email = document.getElementById("email");
@@ -31,16 +30,19 @@ verificandoInputs = function () {
   verificarCamposPreenchidos();
   if (Senha1.value !== Senha2.value) {
     alert("As senhas precisam ser iguais");
-  } else {
+  } 
+  else if (localStorage.getItem("Email") !== Email.value) {
     formsOk = true;
-    console.log(formsOk);
+  } else {
+    alert("Email já cadastrado")
   }
   // Configurando o localStorage
   if (formsOk == true) {
-    window.location.reload();
+    localStorage.setItem("Nome", Nome.value);
     localStorage.setItem("Email", Email.value);
     localStorage.setItem("Senha", Senha2.value);
     localStorage.setItem("Data de Nascimento", Nascimento.value);
     alert("Dados Enviados com sucesso");
+    window.open("./page/index.html", '_self');
   }
 };
