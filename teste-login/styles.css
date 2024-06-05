@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
+html {
+  cursor: url('./assets/cute-cardcaptor-sakura-sakura-kinomoto-and-key-cursor.png'), auto;
+}
+
+
 body {
   margin: 0;
   padding: 0;
@@ -58,7 +64,7 @@ input {
 }
 
 .formulario button {
-  cursor: pointer;
+  cursor: url('./assets/cute-cardcaptor-sakura-sakura-kinomoto-and-key-pointer.png'), pointer;
   height: 40px;
   border-radius: 8px;
   background: #a6255c;

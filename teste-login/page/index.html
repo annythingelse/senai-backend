@@ -6,83 +6,89 @@
     <title>Home</title>
     <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="https://mir-s3-cdn-cf.behance.net/project_modules/disp/c73abc16924133.562b31db45254.png">
 </head>
 <body>
-    <header>
-        <div>
-            <p id="username"></p>
-            <a href="#">
-                <button  id="backLogin">Voltar para tela de login</button>
-            </a>
+    <header >
+        <div style="max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 18px;">
+            <div>
+                <p  id="username"></p>
+                <a style="padding: 10px 0;" href="#">
+                    <button id="backLogin">Voltar para tela de login</button>
+                </a>
+            </div>
+            <img src="../assets/logo.png" alt="" srcset="">
         </div>
-        <img src="../assets/logo.png" alt="" srcset="">
-        <a href="#" onclick="">
-            Carrinho
-        </a>
     </header>
     <main>
-       <h2>Mousepad´s</h2>
+        <div class="infocard">
+            <div class="infocard-description">
+                <h1 style="color: #BD7A5C;" class="infocard-title">Sakura Card Captor</h1>
+                <p  style="font-size: 18px;" class="infocard-text">
+                    Sakura Kinomoto é uma garota de 10 anos, estudante da fictícia cidade japonesa de Tomoeda, que por acidente abre um livro misterioso, chamado Livro Clow. Do livro saem 52 cartas mágicas levadas por uma tempestade de vento causada pela magia da carta Vento, que foi libertada quando Sakura leu o seu nome. Kerberos, o guardião das cartas (uma criatura muito parecida com um animal de pelúcia bem pequeno), surge do livro e conta a Sakura que as cartas foram espalhadas por toda Tomoeda e é seu dever capturá-las de novo, tornando-a uma cardcaptor (caça-cartas em português). <br> <br>
+                    As cartas provocam fenômenos estranhos ao redor de Sakura, que emprega os poderes das cartas já capturadas em seu báculo mágico para dominá-las e juntá-las à sua coleção. Ela conta com a ajuda de sua amiga Tomoyo, e mais tarde de outros personagens como Syaoran Li, um cardcaptor rival que mais tarde se torna seu aliado, e Yue, outro guardião das cartas.
+                </p>
+            </div>
+            <div class="infocard-img">
+                <img style="max-height: 500px;" src="../assets/sakura-sobre.jpg" alt="">
+            </div>
+        </div>
+
+       <h2 style="color: #BD7A5C;">Personagens</h2>
        <div class="content">
         <div class="item">
             <img src="../assets/sakura.webp" alt="" srcset="">
             <div class="description">
-                <h4>Sakura Kinomoto (木之本 さくら Kinomoto Sakura)</h4>
-                <p> Quantidade <input type="number"  value="1" min="1" max="10" name="" id=""></p>
-                <button type="button" onclick="">Comprar</button>
+                <h4>Sakura Kinomoto <br> 木之本 さくら</h4>
+                <button class="ver-detalhes" type="button" onclick="">ver detalhes</button>
             </div>
         </div>
         <div class="item">
             <img src="../assets/syaoran.webp" alt="" srcset="">
             <div class="description">
-                <h4>Syaoran Li (リ・シャオラン Ri Shaoran, do chinês 李 小狼 Lǐ Xiǎoláng)</h4>
-                <p> Quantidade <input type="number"  value="1" min="1" max="10" name="" id=""></p>
-                <button type="button" onclick="">Comprar</button>
+                <h4>Syaoran Li <br> リ・シャオラン</h4>
+                <button class="ver-detalhes" type="button" onclick="">ver detalhes</button>
             </div>
         </div>
         <div class="item">
             <img src="../assets/tomoyo.webp" alt="" srcset="">
             <div class="description">
-                <h4>Tomoyo Daidouji (大道寺 知世 Daidōji Tomoyo) </h4>
-                <p> Quantidade <input type="number"  value="1" min="1" max="10" name="" id=""></p>
-                <button type="button" onclick="">Comprar</button>
+                <h4>Tomoyo Daidouji <br> 大道寺 知世</h4>
+                <button class="ver-detalhes" type="button" onclick="">ver detalhes</button>
             </div>
         </div>
         <div class="item">
             <img src="../assets/touya.webp" alt="" srcset="">
             <div class="description">
-                <h4>Touya Kinomoto (木之本 桃矢 Kinomoto Tōya)</h4>
-                <p> Quantidade <input type="number"  value="1" min="1" max="10" name="" id=""></p>
-                <button type="button" onclick="">Comprar</button>
+                <h4>Touya Kinomoto <br> 木之本 桃矢</h4>
+                <button class="ver-detalhes" type="button" onclick="">ver detalhes</button>
             </div>
         </div>
         <div class="item">
             <img src="../assets/yukito-false.webp" alt="" srcset="">
             <div class="description">
-                <h4>Yukito Tsukishiro (月城 雪兎 Tsukishiro Yukito) </h4>
-                <p> Quantidade <input type="number"  value="1" min="1" max="10" name="" id=""></p>
-                <button type="button" onclick="">Comprar</button>
+                <h4>Yukito Tsukishiro <br> 月城 雪兎</h4>
+                <button class="ver-detalhes" type="button" onclick="">ver detalhes</button>
             </div>
         </div>
         <div class="item">
             <img src="../assets/yukito.webp" alt="" srcset="">
             <div class="description">
-                <h4>Yue (ユエ do chinês 月 Yuè)</h4>
-                <p> Quantidade <input type="number"  value="1" min="1" max="10" name="" id=""></p>
-                <button type="button" onclick="">Comprar</button>
+                <h4>Yue <br> ユエ</h4>
+                <button class="ver-detalhes" type="button" onclick="">ver detalhes</button>
             </div>
         </div>
         <div class="item">
             <img src="../assets/kero.webp" alt="" srcset="">
             <div class="description">
-                <h4>Kerberos (ケルベロス Keruberosu)</h4>
-                <p> Quantidade <input type="number"  value="1" min="1" max="10" name="" id=""></p>
-                <button type="button" onclick="">Comprar</button>
+                <h4>Kerberos <br> ケルベロス</h4>
+                <button class="ver-detalhes" type="button" onclick="">ver detalhes</button>
             </div>
         </div>
        </div>
     </main>
-    <footer>
-        <h2>Informações do site</h2>
+    <footer style="font-size: 18px;">
+        <h2 style="color: #FF5B80;">Informações do site</h2>
         <p><span>Sakura Card Captor</span></p>
     </footer>
 </body>
