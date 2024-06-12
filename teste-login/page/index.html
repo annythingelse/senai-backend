@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <script src="./script.js" defer></script>
+    <script src="../script.js" defer></script>
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="https://mir-s3-cdn-cf.behance.net/project_modules/disp/c73abc16924133.562b31db45254.png">
 </head>
@@ -14,10 +14,13 @@
             <div>
                 <p  id="username"></p>
                 <a style="padding: 10px 0;" href="#">
-                    <button id="backLogin">Voltar para tela de login</button>
+                    <button id="backLogin" onclick="backToLogin()">Voltar para tela de login</button>
                 </a>
             </div>
-            <img src="../assets/logo.png" alt="" srcset="">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-direction: row !important;">
+                <img src="../assets/logo.png" alt="" srcset="">
+                <img src="../assets/carrinho.png" alt="" srcset="">
+            </div>
         </div>
     </header>
     <main>

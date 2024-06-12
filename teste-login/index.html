@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS :D</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
   </head>
   <body style="background: #f4c4cb;">
     <div class="container">
@@ -13,18 +14,19 @@
       </div>
 
       <div class="formulario">
-        <input type="text" placeholder="Digite seu nome" id="name" />
-        <input placeholder="Digite seu email" type="email" id="email" />
+        <input type="text" placeholder="Digite seu nome" id="name" oninput="verificarCamposPreenchidos()" />
+        <input placeholder="Digite seu email" type="email" id="email" oninput="verificarCamposPreenchidos()"/>
         <div class="formulario-senha">
-          <input placeholder="Crie uma senha" type="password" id="password" />
+          <input placeholder="Crie uma senha" type="password" id="password"  oninput="verificarCamposPreenchidos()"/>
           <input
             placeholder="Confirme sua senha"
             type="password"
             id="passwordConfirmed"
+            oninput="verificarCamposPreenchidos()"
           />
         </div>
         <label>Digite sua data de nascimento</label>
-        <input type="date" name="" id="birthdayDate" />
+        <input type="date" name="" id="birthdayDate" oninput="verificarCamposPreenchidos()" />
         <button id="sendButton" onclick="verificandoInputs()" disabled>
           Cadastrar
         </button>
@@ -33,5 +35,4 @@
 
     <footer></footer>
   </body>
-  <script src="./script.js"></script>
 </html>

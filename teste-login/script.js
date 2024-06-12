@@ -20,11 +20,46 @@ function verificarCamposPreenchidos() {
   }
 }
 
-Email.addEventListener("input", verificarCamposPreenchidos);
-Senha1.addEventListener("input", verificarCamposPreenchidos);
-Senha2.addEventListener("input", verificarCamposPreenchidos);
-Nascimento.addEventListener("input", verificarCamposPreenchidos);
-Nome.addEventListener("input", verificarCamposPreenchidos);
+
+let login = '', senha, email
+
+let usr = []
+let snh = []
+let mail = []
+let bhday = []
+
+function criaLogin() {
+    if(localStorage.usrArr) {
+        usr = JSON.parse(localStorage.getItem('usrArr'))
+    } 
+    if(localStorage.snhArr) {
+        snh = JSON.parse(localStorage.getItem('snhArr'))
+    }
+    if(localStorage.emailArr) {
+      mail = JSON.parse(localStorage.getItem('emailArr'))
+    }
+    if(localStorage.birthdayArr) {
+      bhday = JSON.parse(localStorage.getItem('birthdayArr'))
+    }
+    usr.push(Nome.value)
+    localStorage.usrArr = JSON.stringify(usr)
+
+    snh.push(Senha2.value)
+    localStorage.snhArr = JSON.stringify(snh)
+
+    mail.push(Email.value)
+    localStorage.emailArr = JSON.stringify(mail)
+
+    bhday.push(Nascimento.value)
+    localStorage.birthdayArr = JSON.stringify(bhday)
+
+    if(usr.includes(Nome.value) && snh.includes(Senha2.value) && mail.includes(Email.value) && bhday.includes(Nascimento.value)) {
+        alert("Login criado com sucesso")
+    }else {
+        alert("Login não pode ser criado")
+    }
+}
+
 
 verificandoInputs = function () {
   verificarCamposPreenchidos();
@@ -38,11 +73,25 @@ verificandoInputs = function () {
   }
   // Configurando o localStorage
   if (formsOk == true) {
-    localStorage.setItem("Nome", Nome.value);
-    localStorage.setItem("Email", Email.value);
-    localStorage.setItem("Senha", Senha2.value);
-    localStorage.setItem("Data de Nascimento", Nascimento.value);
-    alert("Dados Enviados com sucesso");
+    criaLogin()
     window.open("./page/index.html", '_self');
   }
 };
+
+
+// Home
+function backToLogin() {
+  window.open("../index.html", '_self');
+}
+
+let getUsername = localStorage.getItem("usrArr")
+let usernameArray = JSON.parse(getUsername);
+
+if(usernameArray.length > 0) {
+  let lastUsername = usernameArray.pop()
+  let username = lastUsername.replace(/^"|"$/g, '');
+  document.getElementById("username").textContent = "Olá, " + username;
+
+} else {
+  document.getElementById("username").textContent = "Usuário Não logado";
+}
