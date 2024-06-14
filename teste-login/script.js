@@ -1,6 +1,10 @@
 // verificando inputs
 let formsOk = false;
 
+function openHome() {
+  window.open('./page/index.html', '_self');
+}
+
 let Nome = document.getElementById("name");
 let Email = document.getElementById("email");
 let Senha1 = document.getElementById("password");
@@ -20,6 +24,15 @@ function verificarCamposPreenchidos() {
   }
 }
 
+function formResponse(responseText) {
+  const getHtml = document.getElementById("formulario-de-cadastro")  
+  const DivResponse = document.createElement('div');
+  DivResponse.setAttribute("id", "response");
+  const response = document.createElement('p');
+  getHtml.appendChild(DivResponse);
+  DivResponse.appendChild(response);
+  response.textContent = responseText;
+}
 
 let login = '', senha, email
 
@@ -54,9 +67,9 @@ function criaLogin() {
     localStorage.birthdayArr = JSON.stringify(bhday)
 
     if(usr.includes(Nome.value) && snh.includes(Senha2.value) && mail.includes(Email.value) && bhday.includes(Nascimento.value)) {
-        alert("Login criado com sucesso")
+      formResponse('Login criado com sucesso!') ;
     }else {
-        alert("Login não pode ser criado")
+      formResponse('Login não pode ser criado!') ;      
     }
 }
 
@@ -64,17 +77,16 @@ function criaLogin() {
 verificandoInputs = function () {
   verificarCamposPreenchidos();
   if (Senha1.value !== Senha2.value) {
-    alert("As senhas precisam ser iguais");
+    formResponse("As senhas precisam ser iguais");
   } 
   else if (localStorage.getItem("Email") !== Email.value) {
     formsOk = true;
   } else {
-    alert("Email já cadastrado")
+    formResponse("Email já cadastrado")
   }
-  // Configurando o localStorage
   if (formsOk == true) {
     criaLogin()
-    window.open("./page/index.html", '_self');
+    setTimeout(openHome, 1000);
   }
 };
 

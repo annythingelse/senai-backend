@@ -77,6 +77,17 @@ input {
   cursor: default;
 }
 
+#response {
+  position: absolute;
+  width: 100%;
+  background: #a6255c;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
 @media (min-width: 1024px) {
   .container-logo {
     max-width: 50%;

@@ -56,14 +56,13 @@
 // console.log(valorString(valorBooleano));
 
 // EX 5
-function diaDaSemana(data) {
-    const dias = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
-    const date = new Date(data);
-    const dia = date.getDay();
-    return dias[dia];
-}
+// function diaDaSemana(data) {
+//     const dias = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+//     const date = new Date(data);
+//     const dia = date.getDay();
+//     return dias[dia];
+// }
   
-const data = '2022-10-14';
-const dia = diaDaSemana(data);
-console.log(dia); 
+// const data = '2024-06-15';
+// console.log(diaDaSemana(data)); 
   
