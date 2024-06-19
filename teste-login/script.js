@@ -1,6 +1,3 @@
-// verificando inputs
-let formsOk = false;
-
 function openHome() {
   window.open('./page/index.html', '_self');
 }
@@ -34,61 +31,56 @@ function formResponse(responseText) {
   response.textContent = responseText;
 }
 
-let login = '', senha, email
+let user = []
 
-let usr = []
-let snh = []
-let mail = []
-let bhday = []
+class User {
+  constructor(usr, snh, mail, bhday) {
+      this.usr = usr;
+      this.snh = snh;
+      this.mail = mail;
+      this.bhday = bhday;
+  }
+}
 
-function criaLogin() {
-    if(localStorage.usrArr) {
-        usr = JSON.parse(localStorage.getItem('usrArr'))
-    } 
-    if(localStorage.snhArr) {
-        snh = JSON.parse(localStorage.getItem('snhArr'))
-    }
-    if(localStorage.emailArr) {
-      mail = JSON.parse(localStorage.getItem('emailArr'))
-    }
-    if(localStorage.birthdayArr) {
-      bhday = JSON.parse(localStorage.getItem('birthdayArr'))
-    }
-    usr.push(Nome.value)
-    localStorage.usrArr = JSON.stringify(usr)
+function addUser() {
+  verificarCamposPreenchidos();
+  const loginExistente = user.some(i => i.mail === Email.value);
 
-    snh.push(Senha2.value)
-    localStorage.snhArr = JSON.stringify(snh)
+  if (loginExistente) {
+    formResponse('Email já cadastrado!');
+  } 
+   
+  else if (Senha1.value !== Senha2.value) {
+    formResponse("As senhas precisam ser iguais");
+  } 
+  else {
+      user.push(new User(Nome.value, Senha2.value, Email.value, Nascimento.value));
+      // Converte o array de personagens para uma string JSON
+      const userJSON = JSON.stringify(user);
+  
+      // Armazena a string JSON no localStorage
+      localStorage.setItem('Users', userJSON);
 
-    mail.push(Email.value)
-    localStorage.emailArr = JSON.stringify(mail)
-
-    bhday.push(Nascimento.value)
-    localStorage.birthdayArr = JSON.stringify(bhday)
-
-    if(usr.includes(Nome.value) && snh.includes(Senha2.value) && mail.includes(Email.value) && bhday.includes(Nascimento.value)) {
-      formResponse('Login criado com sucesso!') ;
-    }else {
-      formResponse('Login não pode ser criado!') ;      
-    }
+      formResponse("Login Cadastrado com sucesso");
+      setTimeout(openHome, 1000);
+  }
 }
 
 
-verificandoInputs = function () {
-  verificarCamposPreenchidos();
-  if (Senha1.value !== Senha2.value) {
-    formResponse("As senhas precisam ser iguais");
-  } 
-  else if (localStorage.getItem("Email") !== Email.value) {
-    formsOk = true;
-  } else {
-    formResponse("Email já cadastrado")
+// Função para carregar personagens do localStorage ao carregar a página
+function carregarUsuarios() {
+  const usersSalvosJSON = localStorage.getItem('Users');
+
+  if (usersSalvosJSON) {
+      const userSalvos = JSON.parse(usersSalvosJSON);
+      user = userSalvos.map(i => 
+        new User(Nome.value, Senha2.value, Email.value, Nascimento.value)
+      );
   }
-  if (formsOk == true) {
-    criaLogin()
-    setTimeout(openHome, 1000);
-  }
-};
+}
+
+// Chama a função para carregar personagens quando a página é carregada
+window.onload = carregarUsuarios;
 
 
 // Home
