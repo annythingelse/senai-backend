@@ -9,6 +9,7 @@ let Senha2 = document.getElementById("passwordConfirmed");
 let Nascimento = document.getElementById("birthdayDate");
 let Button = document.getElementById("sendButton");
 
+
 function verificarCamposPreenchidos() {
   if (
     Email.value !== "" &&
@@ -18,20 +19,26 @@ function verificarCamposPreenchidos() {
     Nome.value !== ""
   ) {
     Button.disabled = false;
+  } else {
+    Button.disabled = true;
   }
 }
 
+
 function formResponse(responseText) {
-  const getHtml = document.getElementById("formulario-de-cadastro")  
-  const DivResponse = document.createElement('div');
-  DivResponse.setAttribute("id", "response");
-  const response = document.createElement('p');
-  getHtml.appendChild(DivResponse);
-  DivResponse.appendChild(response);
-  response.textContent = responseText;
+  const getHtml = document.getElementById("formulario-de-cadastro");
+  let DivResponse = document.getElementById("response");
+  
+  if (!DivResponse) {
+    DivResponse = document.createElement('div');
+    DivResponse.setAttribute("id", "response");
+    getHtml.appendChild(DivResponse);
+  }
+
+  DivResponse.textContent = responseText;
 }
 
-let user = []
+let user = JSON.parse(localStorage.getItem('Users')) || [];
 
 class User {
   constructor(usr, snh, mail, bhday) {
@@ -43,44 +50,30 @@ class User {
 }
 
 function addUser() {
-  verificarCamposPreenchidos();
   const loginExistente = user.some(i => i.mail === Email.value);
-
+   
   if (loginExistente) {
     formResponse('Email já cadastrado!');
   } 
-   
-  else if (Senha1.value !== Senha2.value) {
-    formResponse("As senhas precisam ser iguais");
-  } 
+
   else {
       user.push(new User(Nome.value, Senha2.value, Email.value, Nascimento.value));
-      // Converte o array de personagens para uma string JSON
       const userJSON = JSON.stringify(user);
-  
-      // Armazena a string JSON no localStorage
       localStorage.setItem('Users', userJSON);
-
       formResponse("Login Cadastrado com sucesso");
-      setTimeout(openHome, 1000);
+      setTimeout(openHome, 1500);
   }
 }
 
-
-// Função para carregar personagens do localStorage ao carregar a página
-function carregarUsuarios() {
-  const usersSalvosJSON = localStorage.getItem('Users');
-
-  if (usersSalvosJSON) {
-      const userSalvos = JSON.parse(usersSalvosJSON);
-      user = userSalvos.map(i => 
-        new User(Nome.value, Senha2.value, Email.value, Nascimento.value)
-      );
+function cadastrarUsuario() {
+  verificarCamposPreenchidos();
+  if(Senha1.value !== Senha2.value) {
+    formResponse("As senhas precisam ser iguais")
+  } else {
+    addUser()
   }
 }
 
-// Chama a função para carregar personagens quando a página é carregada
-window.onload = carregarUsuarios;
 
 
 // Home
@@ -88,14 +81,13 @@ function backToLogin() {
   window.open("../index.html", '_self');
 }
 
-let getUsername = localStorage.getItem("usrArr")
-let usernameArray = JSON.parse(getUsername);
+const getUsername = user.map(item => item.usr);
+const lastUsername = getUsername.pop()
+console.log(getUsername, lastUsername);
 
-if(usernameArray.length > 0) {
-  let lastUsername = usernameArray.pop()
+if(user.length > 0) {
   let username = lastUsername.replace(/^"|"$/g, '');
   document.getElementById("username").textContent = "Olá, " + username;
-
 } else {
   document.getElementById("username").textContent = "Usuário Não logado";
 }

@@ -78,6 +78,7 @@ input {
 }
 
 #response {
+  padding: 10px;
   position: absolute;
   width: 100%;
   background: #a6255c;
