@@ -1,0 +1,34 @@
+{
+    "produtos" : [
+        {
+            "id": 1,
+            "nome": "Smartphone",
+            "descricao": "Smartphone samsung galaxy a53 5g",
+            "preco": 2500.00
+        },
+        {
+            "id": 2,
+            "nome": "Smartphone",
+            "descricao": "Smartphone Iphone 13",
+            "preco": 3200.00
+        },
+        {
+            "id": 3,
+            "nome": "Smartphone",
+            "descricao": "Smartphone samsung galaxy a23",
+            "preco": 1500.00
+        },
+        {
+            "id": 4,
+            "nome": "Smartphone",
+            "descricao": "Smartphone samsung galaxy m62",
+            "preco": 1800.00
+        },
+        {
+            "id": 5,
+            "nome": "Smartphone",
+            "descricao": "Smartphone Iphone X",
+            "preco": 2500.00
+        }
+    ]
+}
