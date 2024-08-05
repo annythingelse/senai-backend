@@ -9,27 +9,27 @@ let qtd = [];
 let totalCompra = [];
 
 // Carregar dados do localStorage, se existirem
-if(localStorage.prodArr){
+if (localStorage.prodArr) {
     produto = JSON.parse(localStorage.getItem('prodArr'));
 }
 
-if(localStorage.codArr){
+if (localStorage.codArr) {
     cod = JSON.parse(localStorage.getItem('codArr'));
 }
 
-if(localStorage.precoArr){
+if (localStorage.precoArr) {
     preco = JSON.parse(localStorage.getItem('precoArr'));
 }
 
-if(localStorage.linkArr){
+if (localStorage.linkArr) {
     link = JSON.parse(localStorage.getItem('linkArr'));
 }
 
-if(localStorage.qtdArr){
+if (localStorage.qtdArr) {
     qtd = JSON.parse(localStorage.getItem('qtdArr'));
 }
 
-if(localStorage.totCompArr){
+if (localStorage.totCompArr) {
     totalCompra = JSON.parse(localStorage.getItem('totCompArr'));
 }
 
@@ -42,7 +42,7 @@ section.setAttribute('class', 'products-container');
 main.append(section);
 
 // Criar elementos para cada produto
-for(let i = 0; i < produto.length; i++){ 
+for (let i = 0; i < produto.length; i++) {
     article = document.createElement('article');
     article.setAttribute('class', 'card');
     section.append(article);
@@ -85,6 +85,7 @@ for(let i = 0; i < produto.length; i++){
 
     aLink = document.createElement('a');
     aLink.setAttribute('class', 'btn');
+    aLink.setAttribute('onclick', "compra(" + "'" + 'qtd- ' + i + "'" + ',' + "'" + cod[i] + "'" + ',' + i + ")")
     aLink.setAttribute('href', 'http://www.amazon.com.br/' + link[i]);
     aLink.setAttribute('target', '_blank');
     aLink.innerHTML = 'Comprar';
@@ -110,9 +111,9 @@ aLink2.innerHTML = 'Administração';
 footer.append(aLink2);
 
 // Função para salvar dados inseridos
-function getDados(){
+function getDados() {
     // QUANTIDADE
-    if(localStorage.qtdArr){
+    if (localStorage.qtdArr) {
         qtd = JSON.parse(localStorage.getItem('qtdArr'));
     }
 
@@ -120,7 +121,7 @@ function getDados(){
     localStorage.qtdArr = JSON.stringify(qtd);
 
     // TOTAL DA COMPRA
-    if(localStorage.totCompArr){
+    if (localStorage.totCompArr) {
         totalCompra = JSON.parse(localStorage.getItem('totCompArr'));
     }
 
@@ -128,7 +129,7 @@ function getDados(){
     localStorage.totCompArr = JSON.stringify(totalCompra);
 
     // PRODUTO
-    if(localStorage.prodArr){
+    if (localStorage.prodArr) {
         produto = JSON.parse(localStorage.getItem('prodArr'));
     }
 
@@ -138,7 +139,7 @@ function getDados(){
     document.querySelector('#produto').value = '';
 
     // CÓDIGO
-    if(localStorage.codArr){
+    if (localStorage.codArr) {
         cod = JSON.parse(localStorage.getItem('codArr'));
     }
 
@@ -148,7 +149,7 @@ function getDados(){
     document.querySelector('#codigo').value = '';
 
     // PREÇO
-    if(localStorage.precoArr){
+    if (localStorage.precoArr) {
         preco = JSON.parse(localStorage.getItem('precoArr'));
     }
 
@@ -158,7 +159,7 @@ function getDados(){
     document.querySelector('#preco').value = '';
 
     // LINK
-    if(localStorage.linkArr){
+    if (localStorage.linkArr) {
         link = JSON.parse(localStorage.getItem('linkArr'));
     }
 
@@ -171,12 +172,12 @@ function getDados(){
 }
 
 // Função para criar um novo login
-function criaLogin(){
-    if(localStorage.usrArr){
+function criaLogin() {
+    if (localStorage.usrArr) {
         usr = JSON.parse(localStorage.getItem('usrArr'));
     }
 
-    if(localStorage.snhArr){
+    if (localStorage.snhArr) {
         snh = JSON.parse(localStorage.getItem('snhArr'));
     }
 
@@ -188,7 +189,7 @@ function criaLogin(){
     snh.push(novaSnh);
     localStorage.snhArr = JSON.stringify(snh);
 
-    if(usr.includes(novoUsr) && snh.includes(novaSnh)){
+    if (usr.includes(novoUsr) && snh.includes(novaSnh)) {
         alert("Login criado com sucesso!");
     } else {
         alert("Login não pode ser criado!");
@@ -196,12 +197,12 @@ function criaLogin(){
 }
 
 // Função para abrir a tela de login
-function abreTelaLogin(){
-    if(localStorage.usrArr){
+function abreTelaLogin() {
+    if (localStorage.usrArr) {
         usr = JSON.parse(localStorage.getItem('usrArr'));
     }
 
-    if(localStorage.snhArr){
+    if (localStorage.snhArr) {
         snh = JSON.parse(localStorage.getItem('snhArr'));
     }
 
@@ -209,9 +210,31 @@ function abreTelaLogin(){
     senha = prompt("Senha: ");
     let indUsr = usr.indexOf(login);
 
-    if(usr[indUsr] == login && snh[indUsr] == senha){
+    if (usr[indUsr] == login && snh[indUsr] == senha) {
         document.querySelector("#login").innerHTML = `Bem-vindo, ${login}`;
     } else {
         alert("Digite um usuário/senha correto!");
+    }
+}
+
+function compra(qtdID, produt, posArr) {
+
+    if (localStorage.posArr) {
+        qtd[posArr] = parseInt(document.getElementById(qtdID).value)
+    } else {
+        localStorage.posArr = JSON.stringify(qtd)
+    }
+    totalCompra[posArr] = qtd[posArr] * parseFloat(document.getElementById(produt).innerText)
+    alert(totalCompra[posArr])
+    localStorage.qtdArr = JSON.stringify(qtd)
+    localStorage.totCompArr = JSON.stringify(totalCompra)
+}
+
+function calculaCesta() {
+    usr = JSON.parse(localStorage.getItem('usrArr'))
+    if (usr.includes(login)) {
+        alert("logado")
+    } else {
+        alert("Você não esta logado")
     }
 }
