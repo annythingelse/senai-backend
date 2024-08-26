@@ -1,4 +1,4 @@
-let login = '', senha = '', article, div, h3, p1, input, p2, span, aLink, main, section, footer, h2, p3, span2;
+let login = '', senha = '', article, div, h3, p1, input, p2, span, aLink, main, section, footer, h2, p3, span2, loginAut, textoCarrinho, totalGeral, div2;
 let usr = [];
 let snh = [];
 let produto = [];
@@ -232,9 +232,76 @@ function compra(qtdID, produt, posArr) {
 
 function calculaCesta() {
     usr = JSON.parse(localStorage.getItem('usrArr'))
-    if (usr.includes(login)) {
-        alert("logado")
-    } else {
+    loginAut = localStorage.getItem('loginAutenticado')
+    if (usr.includes(loginAut)) {
+        let textoCarrinho = ''
+        for(i in qtd) {
+            if(qtd[i]>0) {
+                totalGeral += totalCompra[i]
+                textoCarrinho +=qtd[i] + " x " + preco[i].toFixed(2).replace('.', ',') + " - Boneco" + produto[i] + " R$ " + totalCompra[i].toFixed(2).replace('.', ',') + "\n"
+            }
+        }if(totalGeral > 0) {
+            alert(`${textoCarrinho}
+            ______________________________________________________________
+            Total da compra  R$ ${totalGeral.toFixed(2).replace('.', ',')}
+            `)
+            let text = "Confirme ou cancele sua compra! \n Pressione OK para comprar ou cancelar para desistir da compra."
+            if(confirm(text) == true) {
+                for(i in qtd) {
+                    qdt[i] = 0
+                }
+            }
+            localStorage.qtdArr = JSON.stringify(qtd)
+            window.location.reload()
+
+        } else {
+            alert("Sua compra não foi realizada!")
+            totalGeral = 0
+        }
+    } 
+    else {
         alert("Você não esta logado")
     }
+}
+
+function abreLink(posArr) {
+    localStorage.setItem('produtoIndividual', produto[posArr])
+    // setItem - amarzena valores no localstorage
+    localStorage.setItem('descricaoIndividual', descricao[posArr])
+    let url_atual = window.location.href
+    if(url_atual != "https://127.0.0.1:5500/produto.html" && url_atual != "https://127.0.0.1:5500/produto.html#") {
+    window.location.href = "/produto.html"
+    }
+}
+
+function carregaProduto() {
+    let produtoCompra = localStorage.getItem('produtoIndividual')
+    let descCompra = localStorage.getItem("descricaoIndividual")
+    let pos = produto.indexOf(produtoCompra)
+    document.getElementById("tituloProduto".innerHTML = produtoCompra)
+    document.getElementById("descProduto").innerHTML = descCompra
+    document.getElementById('imgProd').style.backgroundImage = 'url(images/img' + pos + '.jpg)'
+    div2 = document.createElement('div')
+    div2.setAttribute('class', 'card')
+    document.body.append(div2)
+    div2.append(p1)
+    input = document.createElement(input)
+    input.setAttribute('type', 'number')
+    input.setAttribute('value', '1')
+    input.setAttribute('min', '1')
+    input.setAttribute('max', '10')
+    input.setAttribute('id', 'qtd-' + pos)
+    p1.append(input)
+    p2 = document.createAttribute('p')
+    p2.innerHTML = 'R$'
+    span = document.createElement('span')
+    span.setAttribute('id', cod[pos])
+    span.setAttribute('class', 'bold')
+    span.innerHTML = preco[pos].toFixed(2).replace('.', ',')
+    p2.append(span)
+    div2.append(p2)
+    aLink = document.createElement('a')
+    aLink.setAttribute('onlink', 'compra('+ "'" + 'qtd-' + pos + "'" + ',' + "'" + cod[pos] + "'" + ',' + pos + ')')
+    aLink.setAttribute('', '')
+
 }
