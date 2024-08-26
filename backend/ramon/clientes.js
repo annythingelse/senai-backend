@@ -17,8 +17,15 @@ const getClient = async (req, res) => {
 }
 const createClient = async (req,res) => {
     const dados = req.body
+    const lista_clients = db.clientes
+    const emailExist = lista_clients.find(
+        (client) => client.email == dados.email
+        )
     if(!dados.nome || !dados.email || !dados.senha) {
        return res.status(406).send({error:'Nome, email e senha devem ser informados'})
+    } 
+    if(emailExist) {
+       return res.status(406).send({error:'Email já cadastrado'})
     }
     const _id = uuidv4()
     const senhaCriptograda = await bcryptjs.hashSync(dados.senha, 10)

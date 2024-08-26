@@ -82,22 +82,10 @@
       }
     },
     {
-      "nome": "Teste",
-      "email": "teste@gmail.com",
-      "senha": "123",
-      "id": "1dfffb30-c6af-42c9-8713-b8300c571bc7"
-    },
-    {
-      "nome": "Teste",
-      "email": "teste@gmail.com",
-      "senha": "123",
-      "id": "20f3818f-6e9c-4371-a865-bb6219e5dd4e"
-    },
-    {
       "nome": "Gabriella Gotz",
       "email": "gabi@gmail.com",
-      "senha": "$2a$10$OpjOzICpSMzpkJAqQbJqBOVnLm2QPMRlcgzQcyVCXXeYLLucbNQuG",
-      "id": "b8a4d146-a07b-496e-9145-57c6cdb9480d"
+      "senha": "$2a$10$htCbeGIvKRn9gjit3NUtH.BZ/JOahqbWVZlRCC284vOozblFORUWO",
+      "id": "048d05f4-2b59-4ac6-bd8e-82dde4e6173f"
     }
   ],
   "pedidos": [
