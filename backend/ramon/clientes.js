@@ -1,7 +1,7 @@
 const db = require('./db.json')
 const { v4: uuidv4 } = require('uuid')
 const fs = require('fs')
-const bcryptjs = require('bcryptjs')
+const bcrypt = require('bcryptjs')
 
 const listClients = async (req,res) => {
     var clients = db.clientes
@@ -19,7 +19,7 @@ const createClient = async (req,res) => {
     const dados = req.body
     const lista_clients = db.clientes
     const emailExist = lista_clients.find(
-        (client) => client.email == dados.email
+        (cliente) => cliente.email == dados.email
         )
     if(!dados.nome || !dados.email || !dados.senha) {
        return res.status(406).send({error:'Nome, email e senha devem ser informados'})
@@ -28,8 +28,8 @@ const createClient = async (req,res) => {
        return res.status(406).send({error:'Email já cadastrado'})
     }
     const _id = uuidv4()
-    const senhaCriptograda = await bcryptjs.hashSync(dados.senha, 10)
-    dados.senha = senhaCriptograda
+    const senhaCriptografada = await bcrypt.hash(dados.senha, 10);
+    dados.senha = senhaCriptografada
     dados.id = _id
     db.clientes.push(dados)
     fs.writeFile('./db.json', JSON.stringify(db), (err) => {
@@ -37,14 +37,14 @@ const createClient = async (req,res) => {
             res.status(500).send({error:'erro no servidor'})
         }
     })
-    res.status(204).send()
+    res.status(201).send({ id: _id, nome: dados.nome, email: dados.email });
 }
 const updateClient = async (req,res) => {
     const _id = req.params.id
     const dados = req.body
     const lista_clients = db.clientes
     const client = lista_clients.find(
-        (client) => client.id == _id
+        (cliente) => cliente.id == _id
         )
     if (!client || !dados) {
         res.status(404).send({error:'not found'})
@@ -68,7 +68,7 @@ const deleteClient = async (req,res) => {
     const _id = req.params.id
     const lista_clients = db.clientes
     const client = lista_clients.find(
-        (client) => client.id == _id
+        (cliente) => cliente.id == _id
     )
     // deletar o produto
     var idx = lista_clients.indexOf(client)
